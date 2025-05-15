@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>Top 5 Leaderboard</h2>
+    <ul class="list-group">
+        {% for entry in leaderboard %}
+            <li class="list-group-item">{{ entry.name }} - {{ entry.score }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('login') }}" class="btn btn-secondary mt-3">Back to Login</a>
+</body>
+</html>

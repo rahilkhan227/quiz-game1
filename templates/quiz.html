@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .quiz-container {
+            display: inline-block;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+        }
+        .form-check {
+            text-align: left;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+        #hint-text {
+            margin-top: 15px;
+            font-style: italic;
+            color: #555;
+            display: none;
+        }
+        .btn-hint {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function toggleHint() {
+            const hint = document.getElementById('hint-text');
+            if (hint.style.display === 'none') {
+                hint.style.display = 'block';
+            } else {
+                hint.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h4>Question {{ index }} of {{ total }}</h4>
+        <form method="POST">
+            <p><strong>{{ question.question }}</strong></p>
+            
+            {% for opt in question.options %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="option" id="option{{ loop.index }}" value="{{ opt }}" required>
+                    <label class="form-check-label" for="option{{ loop.index }}">{{ opt }}</label>
+                </div>
+            {% endfor %}
+
+          
+
+            <br>
+            <button type="submit" class="btn btn-success mt-3">Next</button>
+        </form>
+    </div>
+</body>
+</html>
